@@ -48,7 +48,10 @@ int main()
 
 		cv::imshow("面阵图像", img_a);
 		if (char(cv::waitKey(30)) == ' ')
+		{
 			a_cam.close();
+			break;
+		}
 	}
 #endif
 
