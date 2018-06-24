@@ -11,14 +11,17 @@
 #include <boost/thread.hpp>
 
 /*
-* 控制台键入s并按下enter开始扫描，按t并按下enter结束扫描
+* 鎺у埗鍙伴敭鍏骞舵寜涓媏nter寮�濮嬫壂鎻忥紝鎸塼骞舵寜涓媏nter缁撴潫鎵弿
 */
 void waitKey(cam::LineScanCamera *l_cam)
 {
-	if (std::cin.get() == 's')
-		l_cam->grabStart();
-	if (std::cin.get() == 't')
+	while(true)
+	{
+	    if (std::cin.get() == 's')
+	        l_cam->grabStart();
+	    if (std::cin.get() == 't')
 		l_cam->grabStop();
+	}
 }
 #endif
 
@@ -42,7 +45,7 @@ int main()
 	{
 		cv::Mat img_a = a_cam.getImage();
 
-		cv::imshow("面阵图像", img_a);
+		cv::imshow("闈㈤樀鍥惧儚", img_a);
 		if (char(cv::waitKey(30)) == ' ')
 			a_cam.close();
 	}
@@ -68,7 +71,7 @@ int main()
 		if (l_cam.grab())
 		{
 			cv::Mat img_l = l_cam.getImage();
-			cv::imwrite("file.png", img_l);  //存储图像
+			cv::imwrite("file.png", img_l);  //瀛樺偍鍥惧儚
 		}
 	}
 	l_cam.close();
