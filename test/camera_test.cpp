@@ -17,10 +17,11 @@ void waitKey(cam::LineScanCamera *l_cam)
 {
 	while(true)
 	{
-	    if (std::cin.get() == 's')
-	        l_cam->grabStart();
-	    if (std::cin.get() == 't')
-		l_cam->grabStop();
+		char cmd = std::cin.get();
+	        if (cmd == 's')
+	                l_cam->grabStart();
+	        if (cmd == 't')
+		        l_cam->grabStop();
 	}
 }
 #endif
